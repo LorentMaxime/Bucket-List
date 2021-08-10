@@ -1,0 +1,19 @@
+{% extends 'front.html.twig' %}
+{# on viens chager le template #}
+{# aucun code html en dehors des block twig #}
+
+{% block titre %} Detail |{{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloc parent #}
+
+{% block central %}
+<h1>Le souhait en détail</h1>
+
+<h3>{{ wish.title }}</h3>
+Auteur : {{ wish.author }}
+<hr>
+Categorie : {{ wish.category.name }}
+
+
+
+
+{% endblock %}

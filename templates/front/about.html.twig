@@ -1,0 +1,13 @@
+{% extends 'front.html.twig' %}
+{# on viens chager le template #}
+{# aucun code html en dehors des block twig #}
+
+{% block titre %} About |{{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloc parent #}
+
+{% block central %}
+<h1>About</h1>
+
+
+
+{% endblock %}

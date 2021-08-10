@@ -1,0 +1,31 @@
+{% extends 'front.html.twig' %}
+{# on viens chager le template #}
+{# aucun code html en dehors des block twig #}
+
+{% block titre %} Accueil |{{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloc parent #}
+
+{% block central %}
+<h1>Accueil</h1>
+<br><br>
+
+<h2>Rejoins nous dans l'univers fabuleux des souhaits !</h2>
+<br>
+<h3>Souhaits actuellement à l'affiche :</h3>
+<div class="container">
+    <ul>
+        {% for c in categories %}
+            <li><h5> - {{ c.name }} - </h5></li> 
+                {% for w in c.wishes %}
+                    <ul>
+                        <li><a href="{{ path('wish_detail', { id : w.id }) }}" >{{ w.title }}</a></li>
+                    </ul>
+                {% endfor %}
+            </li>
+        {% endfor %}    
+        </tbody>
+    </ul>
+</div>
+<br>
+
+{% endblock %}

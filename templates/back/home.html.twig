@@ -1,0 +1,42 @@
+{% extends 'back.html.twig' %}
+{# on viens chager le template #}
+{# aucun code html en dehors des block twig #}
+
+{% block titre %} Dashboard |{{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloc parent #}
+
+{% block central %}
+<h1>DashBoard</h1>
+<br><br>
+
+<div>
+    <table class="table table-striped">
+        <tbody>
+         {% for w in wishes %}
+            <tr>
+                <td>{{ w.id }}</td>
+                <td><h5><a href="{{ path('wish_detail', { id : w.id }) }}" >{{ w.title }}</a></h5></td>
+                <td>{{ w.author }}</td>
+                <td>{{ w.dateCreated|date('d-m-Y - H:i:s') }}</td>
+                <td>{% if w.isPublished %}
+                        en ligne
+                    {% else %}
+                        en attente
+                    {% endif %}        
+                </td>
+                <td>{{ w.category.name }}</td>   
+                <td><a href="{{ path('wish_modifier', { id : w.id }) }}" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a></td> 
+                <td><a href="{{ path('wish_enlever', { id : w.id }) }}" class="btn btn-outline-danger" onclick="return confirm('enlever : {{ w.title }} ?')"><i class="fas fa-trash"></i></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{# lien vers ajouter #}
+<a href="{{ path('wish_ajouter') }}" class="btn btn-success">Ajouter</a>
+
+<br>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'back.html.twig' %}
+
+
+{% block titre %}Modifier |{{ parent() }} {% endblock %}
+
+
+{% block central %}
+
+<div class="col-4">
+    <h1>Modifier un Wish</h1>
+    {{ form_start(formWish) }}
+    {{ form_widget(formWish) }}
+    <button type="submit" class="btn btn-success">
+        <i class="fas fa-plus"></i>
+    </button>
+    {{ form_end(formWish) }}
+</div>
+
+{% endblock %}

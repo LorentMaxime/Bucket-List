@@ -16,9 +16,9 @@ class BackController extends AbstractController
 {
 
     /**
-     * @Route("/home", name="wish_home")
+     * @Route("/dashboard", name="dashboard")
      */
-    public function home(WishRepository $repo): Response
+    public function dashboard(WishRepository $repo): Response
     {
         // $wishes = $repo->findBy(['isPublished'=>true], ['dateCreated'=>'DESC']);
         $wishes = $repo->findAll();
@@ -29,10 +29,12 @@ class BackController extends AbstractController
     /**
      * @Route("/ajouter", name="wish_ajouter")
      */
-    public function ajouter(Request $request): Response // par injection de dépendance
+    public function ajouter(Request $request): Response 
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager(); // pas par injection de dépendance
         $wish = new Wish();
+            $pseudo = $this->getUser()->getPseudo();
+        $wish->setAuthor($pseudo);
         $form = $this->createForm(WishType::class,$wish);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -56,7 +58,7 @@ class BackController extends AbstractController
     {
         $em->remove($wish);
         $em->flush();
-        return $this->redirectToRoute('wish_home');
+        return $this->redirectToRoute('dashboard');
 
     }
 
@@ -101,7 +103,7 @@ class BackController extends AbstractController
             $wish->setDateCreated(new \DateTime());
             //$em->persist($wish);
             $em->flush();
-            return $this->redirectToRoute('wish_home');
+            return $this->redirectToRoute('dashboard');
         }
         return $this->render(
             'back/modifier.html.twig',

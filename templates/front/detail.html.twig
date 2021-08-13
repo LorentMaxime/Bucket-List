@@ -9,9 +9,12 @@
 <h1>Le souhait en détail</h1>
 
 <h3>{{ wish.title }}</h3>
-Auteur : {{ wish.author }}
+<div class="infos">
+Auteur : {{ wish.author }} - Categorie : {{ wish.category.name }}
+</div>
+<br>
 <hr>
-Categorie : {{ wish.category.name }}
+{{  wish.description }}
 
 
 

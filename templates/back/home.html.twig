@@ -1,5 +1,5 @@
 {% extends 'back.html.twig' %}
-{# on viens chager le template #}
+{# on viens charger le template #}
 {# aucun code html en dehors des block twig #}
 
 {% block titre %} Dashboard |{{ parent() }} {% endblock %}
@@ -7,7 +7,9 @@
 
 {% block central %}
 <h1>DashBoard</h1>
-<br><br>
+<br>
+{#<p>Bienvenue {{ app.user.pseudo }}<p>#}
+<br>
 
 <div>
     <table class="table table-striped">

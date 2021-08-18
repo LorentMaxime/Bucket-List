@@ -29,14 +29,14 @@
                             <a class="nav-link" href="{{ path('home') }}">Accueil</a></li>
                         {% if is_granted('ROLE_USER') %}
                             <li class="nav-item {% if chemin  == 'app_logout' %}active{% endif %}">
-                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnection</a></li>
+                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a></li>
                             <li class="nav-item {% if chemin  == 'dashboard' %}active{% endif %}">
                                 <a class="nav-link" href="{{ path('dashboard') }}">Liste</a></li>
                         {% else %}    
                             <li class="nav-item {% if chemin  == 'app_register' %}active{% endif %}">
                                 <a class="nav-link" href="{{ path('app_register') }}">Inscription</a></li>
                             <li class="nav-item {% if chemin  == 'app_login' %}active{% endif %}">
-                                <a class="nav-link" href="{{ path('app_login') }}">Connection</a></li>
+                                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a></li>
                         {% endif %}
                     <li class="nav-item {% if chemin  == 'about' %}active{% endif %}">
                                 <a class="nav-link" href="{{ path('about') }}">About Us</a></li>                   

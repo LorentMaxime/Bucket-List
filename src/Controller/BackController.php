@@ -42,7 +42,7 @@ class BackController extends AbstractController
             $wish->setDateCreated(new \DateTime());
             $em->persist($wish);
             $em->flush();
-            return $this->redirectToRoute('wish_home');
+            return $this->redirectToRoute('dashboard');
         }
         return $this->render(
             'back/ajouter.html.twig',
